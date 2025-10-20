@@ -70,22 +70,6 @@ CREATE TABLE [RentBook] (  -- аренда велосипеда клиентом
 ALTER TABLE [Client] 
 ALTER COLUMN [PhoneNumber] VARCHAR(12) NOT NULL;
 
--- У Name слишком мало символов, бывают имена с большим числом букв, увеличить число символов до 20.
-ALTER TABLE [Client] 
-ALTER COLUMN [Name] VARCHAR(20) NOT NULL;
-
-ALTER TABLE [Staff] 
-ALTER COLUMN [Name] VARCHAR(20) NOT NULL;
-
--- Кроме имени стоит добавить фамилию и отчество, клиенты любят когда к ним обращаются уважительно. А о сотрудниках должны быть полные данные.
-ALTER TABLE [Client] 
-ADD [LastName] VARCHAR(20) NOT NULL,
-    [MiddleName] VARCHAR(20) NOT NULL;
-
-ALTER TABLE [Staff] 
-ADD [LastName] VARCHAR(20) NOT NULL,
-    [MiddleName] VARCHAR(20) NOT NULL;
-
 -- Добавить проверку для номера паспорта
 ALTER TABLE [Client] 
 ADD CONSTRAINT [CK_Client_Passport_Format] 
