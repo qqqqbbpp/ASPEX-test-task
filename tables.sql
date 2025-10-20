@@ -110,14 +110,6 @@ ALTER TABLE [ServiceBook]
 ADD CONSTRAINT [CK_ServiceBook_Price] 
 CHECK ([Price] >= 0);
 
--- Добавить финальную цену аренды, будет удобно иметь такой 
-ALTER TABLE [RentBook] 
-ADD [TotalAmount] AS ([Time] * (
-    SELECT [RentPrice] 
-    FROM [Bicycle] 
-    WHERE [Id] = [RentBook].[BicycleId]
-));
-
 -- Добавить статус велосипеда
 ALTER TABLE [Bicycle] 
 ADD [Status] VARCHAR(20) NOT NULL DEFAULT 'Доступен'
