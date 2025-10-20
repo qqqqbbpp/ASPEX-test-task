@@ -7,9 +7,9 @@
 
 CREATE TABLE [Client] (
     [Id]          INT IDENTITY(1,1) NOT NULL,
-    [FirstName]   VARCHAR(20)       NOT NULL,
-    [MiddleName]  VARCHAR(20)       NOT NULL,
-    [LastName]    VARCHAR(20)       NOT NULL,
+    [FirstName]   VARCHAR(25)       NOT NULL,
+    [MiddleName]  VARCHAR(25)       NOT NULL,
+    [LastName]    VARCHAR(25)       NOT NULL,
     [Country]     VARCHAR(50)       NOT NULL,
     [PhoneNumber] VARCHAR(50)       NOT NULL,
     [Passport]    VARCHAR(50)       NOT NULL,
@@ -18,9 +18,9 @@ CREATE TABLE [Client] (
 
 CREATE TABLE [Staff] (
     [Id]       INT IDENTITY(1,1) NOT NULL,
-    [FirstName]   VARCHAR(20)    NOT NULL,
-    [MiddleName]  VARCHAR(20)    NOT NULL,
-    [LastName]    VARCHAR(20)    NOT NULL,  -- имя сотрудника
+    [FirstName]   VARCHAR(25)    NOT NULL, -- имя сотрудника
+    [MiddleName]  VARCHAR(25)    NOT NULL,
+    [LastName]    VARCHAR(25)    NOT NULL,  
     [Passport] VARCHAR(50)       NOT NULL,
     [Date]     DATE              NOT NULL,  -- дата начала работы
     PRIMARY KEY ([Id])
