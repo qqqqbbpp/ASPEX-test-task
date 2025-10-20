@@ -1,17 +1,20 @@
-﻿-- Phone number лучше ограничить до 12 символов, чтобы при вводе не возникало ошибок.
+﻿-- Phone number лучше ограничить до 12 символов, чтобы при вводе не возникало ошибок
 ALTER TABLE [Client]
 ALTER COLUMN [PhoneNumber] VARCHAR(12) NOT NULL;
 
+ALTER TABLE [Client]
+ADD CONSTRAINT CHK_PhoneNumber_Format 
+CHECK ([PhoneNumber] LIKE '+[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]');
 
 -- Чтобы исключить ошибку при вводе номера добавил проверку для номера паспорта
 ALTER TABLE [Client]
 ADD CONSTRAINT [CK_Client_Passport_Format]
 CHECK (
-    ([Country] NOT IN ('Россия', 'Казахстан'))
+    ([Country] NOT IN ('Russia', 'Kazakhstan'))
     OR
-    ([Country] = 'Россия' AND [Passport] LIKE '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]')
+    ([Country] = 'Russia' AND [Passport] LIKE '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]')
     OR
-    ([Country] = 'Казахстан' AND [Passport] LIKE '[A-Z][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]')
+    ([Country] = 'Kazakhstan' AND [Passport] LIKE '[A-Z][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]')
 );
 
 -- Добавил ограничения для целостности данных, цена не может быть отрицательной
@@ -34,7 +37,7 @@ CHECK ([Price] >= 0);
 ALTER TABLE [Bicycle]
 ADD [Status] VARCHAR(20) NOT NULL
     CONSTRAINT [CK_Bicycle_Status]
-    CHECK ([Status] IN ('Доступен', 'В аренде', 'На обслуживании'));
+    CHECK ([Status] IN ('Available', 'Rented', 'Under Maintenance'));
 
 
 -- Добавить число запчастей в наличии
