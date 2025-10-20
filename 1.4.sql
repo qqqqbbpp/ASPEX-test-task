@@ -21,8 +21,8 @@ SELECT -- финальная цена аренды
     c.FirstName + ' ' + c.LastName AS ClientName,
     b.RentPrice * rb.Time AS FinalPrice,
     CASE 
-        WHEN rb.Paid = 1 THEN 'Оплачено'
-        ELSE 'Не оплачено'
+        WHEN rb.Paid = 1 THEN 'Paid'
+        ELSE 'Not paid'
     END AS PaymentStatus
 FROM 
     RentBook rb
